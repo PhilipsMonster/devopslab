@@ -25,6 +25,12 @@ jobs:
       - name: Unit Test
         run: python -m unittest -v test
 
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
   Deploy:
     needs: Build
     runs-on: ubuntu-latest
@@ -59,4 +65,4 @@ jobs:
 
       # Enviando o código da App para o Heroku fazer Deploy
       - name: Push to Heroku & Deploy
-        run: git push heroku HEAD:main --force
+        run: git push heroku HEAD:main --force      
