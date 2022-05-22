@@ -24,6 +24,9 @@ jobs:
               
       - name: Unit Test
         run: python -m unittest -v test
+
+      - name: Pytest install
+        run: pip install -U pytest
       
       - name: Install PIP
         run: pip install coverage
