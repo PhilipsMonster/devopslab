@@ -24,6 +24,9 @@ jobs:
               
       - name: Unit Test
         run: python -m unittest -v test
+      
+      - name: Install PIP
+        run: pip install coverage
 
       - name: Install tox and any other packages
         run: pip install tox
