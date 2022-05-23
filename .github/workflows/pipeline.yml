@@ -26,7 +26,7 @@ jobs:
         run: python -m unittest -v test
 
       - name: Pytest install
-        run: pip install pytest-cov
+        run: pipenv install pytest_cov
       
       - name: Install PIP
         run: pip install coverage
