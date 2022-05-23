@@ -25,16 +25,11 @@ jobs:
       - name: Unit Test
         run: python -m unittest -v test
 
-      - name: Pytest install
-        run: pipenv install pytest_cov
-      
-      - name: Install PIP
-        run: pip install coverage
-
-      - name: Install tox and any other packages
-        run: pip install tox
-      - name: Run tox
-        run: tox -e py
+      - name: Build coverage file
+        run: |
+          pytest --cache-clear --cov=app test/ > pytest-coverage.txt
+      - name: Comment coverage
+        uses: coroo/pytest-coverage-commentator@v1.0.2
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
